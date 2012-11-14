@@ -14,11 +14,14 @@ You should be able to use any arm-none-eabi-xxx compiler. However, the testing o
 
 # Relevant Makefile Variables
 ## Makefile.common
-### TOOLROOT: ### Installation directory for your compiler. 
-### LIBROOT: ### Installation of the ST Library package for F3 board
+### TOOLROOT:
+Installation directory for your compiler. 
+### LIBROOT:
+Installation of the ST Library package for F3 board
 
-## Makefile ##
-### TEMPLATEROOT: ### Location of the Makefile.common file. 
+## Makefile
+### TEMPLATEROOT:
+Location of the Makefile.common file. 
 
 
 
