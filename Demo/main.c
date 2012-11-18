@@ -5,7 +5,6 @@ void inc(void){
   i += off;
 }
 
-
 int main(void){
   while (1) {
     inc();
