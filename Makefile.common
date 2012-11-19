@@ -74,6 +74,12 @@ clean:
 debug: $(ELF)
 	arm-none-eabi-gdb $(ELF)
 
+download: $(ELF)
+	st-flash write $(ELF) 0x8000000
+
+all: $(ELF)
+
+
 # pull in dependencies
 
 -include $(OBJS:.o=.d)
