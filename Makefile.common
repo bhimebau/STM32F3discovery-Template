@@ -1,6 +1,7 @@
 # name of executable
 
 ELF=$(notdir $(CURDIR)).elf                    
+BIN=$(notdir $(CURDIR)).bin
 
 # Tool path
 
@@ -16,6 +17,7 @@ CC=$(TOOLROOT)/arm-none-eabi-gcc
 LD=$(TOOLROOT)/arm-none-eabi-gcc
 AR=$(TOOLROOT)/arm-none-eabi-ar
 AS=$(TOOLROOT)/arm-none-eabi-as
+OBJCOPY=$(TOOLROOT)/arm-none-eabi-objcopy
 
 # Code Paths
 
@@ -68,11 +70,17 @@ $(ELF) : $(OBJS)
 %.o: %.s
 	$(CC) -c $(CFLAGS) $< -o $@
 
+%.bin: %.elf
+	$(OBJCOPY) -O binary $< $@
+
 clean:
 	rm -f $(OBJS) $(OBJS:.o=.d) $(ELF) startup_stm32f* $(CLEANOTHER)
 
 debug: $(ELF)
 	arm-none-eabi-gdb $(ELF)
+
+flash: $(BIN)
+	st-flash write $(BIN) 0x8000000
 
 # pull in dependencies
 
