@@ -12,6 +12,9 @@ You should be able to use any arm-none-eabi-xxx compiler. However, the testing o
 ## Libraries
 [STM32F3 Discovery Firmware Libraries Provided by ST](http://www.st.com/internet/com/SOFTWARE_RESOURCES/SW_COMPONENT/FIRMWARE/stm32f3discovery_fw.zip)
 
+## Hardware Link
+The makefile.common file use the st-flash utility for downloading which is part of the [texane/stlink github project](https://github.com/texane/stlink).
+
 # Relevant Makefile Variables
 ## Makefile.common
 ### TOOLROOT:

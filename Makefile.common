@@ -79,8 +79,10 @@ clean:
 debug: $(ELF)
 	arm-none-eabi-gdb $(ELF)
 
-flash: $(BIN)
+download: $(BIN)
 	st-flash write $(BIN) 0x8000000
+
+all: $(ELF)
 
 # pull in dependencies
 
