@@ -74,7 +74,7 @@ $(ELF) : $(OBJS)
 	$(OBJCOPY) -O binary $< $@
 
 clean:
-	rm -f $(OBJS) $(OBJS:.o=.d) $(ELF) startup_stm32f* $(CLEANOTHER)
+	rm -f $(OBJS) $(OBJS:.o=.d) $(ELF) startup_stm32f* $(CLEANOTHER) $(BIN)
 
 debug: $(ELF)
 	arm-none-eabi-gdb $(ELF)
