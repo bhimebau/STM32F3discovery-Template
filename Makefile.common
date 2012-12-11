@@ -26,6 +26,7 @@ CORE=$(LIBROOT)/Libraries/CMSIS/Include
 PERIPH=$(LIBROOT)/Libraries/STM32F30x_StdPeriph_Driver
 SYSTEM_FILE=$(LIBROOT)/Libraries/CMSIS/Device/ST/STM32F30x/Source/Templates
 STARTUP_FILE=$(LIBROOT)/Libraries/CMSIS/Device/ST/STM32F30x/Source/Templates/gcc_ride7
+ACCEL_GYRO=$(LIBROOT)/Utilities/STM32F3_Discovery
 
 # Search path for standard files
 
@@ -39,6 +40,8 @@ vpath %.c $(DEVICE)
 
 vpath %.c $(SYSTEM_FILE)
 vpath %.s $(STARTUP_FILE)
+
+vpath %.c $(ACCEL_GYRO)
 
 #  Processor specific
 
@@ -55,6 +58,7 @@ CFLAGS+= -I$(TEMPLATEROOT) -I$(DEVICE) -I$(CORE) -I$(PERIPH)/inc -I.
 CFLAGS+= -DUSE_STDPERIPH_DRIVER $(FULLASSERT) 
 CFLAGS+= -I$(DEVICE)/Include -I$(CORE)
 CFLAGS+= -I$(LIBROOT)/Project/Peripheral_Examples/GPIO_IOToggle
+CFLAGS+= -I$(ACCEL_GYRO)
 
 # Build executable 
 
@@ -82,11 +86,19 @@ debug: $(ELF)
 download: $(BIN)
 	st-flash write $(BIN) 0x8000000
 
+etags:
+	find $(PERIPH) -type f -iname "*.[ch]" | xargs etags --append
+	find $(DEVICE) -type f -iname "*.[ch]" | xargs etags --append
+	find $(CORE) -type f -iname "*.[ch]" | xargs etags --append
+	find $(ACCEL_GYRO) -type f -iname "*.[ch]" | xargs etags --append
+	find . -type f -iname "*.[ch]" | xargs etags --append
+
 all: $(ELF)
 
 # pull in dependencies
 
 -include $(OBJS:.o=.d)
+
 
 
 
