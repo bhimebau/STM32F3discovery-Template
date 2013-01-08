@@ -5,11 +5,11 @@ BIN=$(notdir $(CURDIR)).bin
 
 # Tool path
 
-TOOLROOT=/l/arm/codesourcery/bin
+TOOLROOT=/l/arm2/codesourcery/bin
 
 # Library path
 
-LIBROOT=/l/arm/STM32F3-Discovery_FW_V1.1.0
+LIBROOT=/l/arm2/STM32F3-Discovery_FW_V1.1.0
 
 # Tools
 
